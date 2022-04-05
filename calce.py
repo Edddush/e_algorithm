@@ -10,11 +10,10 @@
 
 import math
 
-
-def keepe(digits, array):
+def ecalculation(num_digits, evalue):
     m = 4
-    test = (digits + 1) * 2.30258509
-    while (m * (math.log(m) - 1.0) + 0.5 * math.log(6.2831852 * m)) < test:
+    test_value = (num_digits + 1) * 2.30258509
+    while (m * (math.log(m) - 1.0) + 0.5 * math.log(6.2831852 * m)) < test_value:
         m += 1
     
   
@@ -25,18 +24,18 @@ def keepe(digits, array):
     for j in range(2, m+1):
         coeff[j] = 1
     
-    array[0] = 2
+    evalue[0] = 2
 
-    for i in range(1, digits):
+    for i in range(1, num_digits):
         carry = 0
         
         for j in range(m, 1, -1):
             temp = coeff[j] * 10 + carry
             carry = int(temp/j)
             coeff[j] = temp - carry * (j)
-        array[i] = carry
-    print(''.join(map(str, array))) 
+        evalue[i] = carry
+    print(''.join(map(str, evalue))) 
 
 n = 10
-array = [0 for i in range(n)]
-keepe(n, array)
+evalue = [0 for i in range(n)]
+ecalculation(n, evalue)

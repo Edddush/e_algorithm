@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <math.h>
 
-void keepe(int num_digits, int * e){
+void ecalculation(int num_digits, int * e){
     int m = 4;
     int temp = 0; 
     int carry = 0;
-    float test = (num_digits + 1) * 2.30258509;
+    float test_value = (num_digits + 1) * 2.30258509;
     
    
-    while ((m * (log(m) - 1.0) + 0.5 * log(6.2831852 * m)) < test){
+    while ((m * (log(m) - 1.0) + 0.5 * log(6.2831852 * m)) < test_value){
         m += 1;
     }
 
@@ -45,10 +45,10 @@ void keepe(int num_digits, int * e){
 
 
 int main(){
-    int digits = 801;
-    int * e = malloc(sizeof(int) * digits);
+    int num_digits = 801;
+    int * e = malloc(sizeof(int) * num_digits);
 
-    keepe(digits, e);
+    ecalculation(num_digits, e);
     free(e);
     return 0;
 }

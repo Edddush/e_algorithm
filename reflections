@@ -1,13 +1,14 @@
 ADA:
-
+    array size can't be declared before digits 
 
 
 Python:
 
+    when creating an array of index 2, m this has to be switched up a bit
 
-
-Foltran
-
+Foltran:
 
 
 C:
+    - same as Python
+    - pointers to array to keep changes

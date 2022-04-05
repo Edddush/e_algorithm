@@ -5,13 +5,13 @@ procedure ecalculation (n, d);
 
     begin 
         integer m;
-        real test;
+        real test_value;
         m := 4;
-        test := (n + 1) * 2.30258509;
+        test_value := (n + 1) * 2.30258509;
         
         loop: m = m + 1;
         if m * (ln(m) - 1.0) + 0.5 * ln(6.2831852 * m)
-            < test then go to loop;
+            < test_value then go to loop;
                 
         begin integer i, j, carry, temp;
             
