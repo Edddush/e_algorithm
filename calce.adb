@@ -19,7 +19,7 @@ procedure calce is
         Get (sig_digits);
         Skip_Line;
 
-        Put_Line ("Please enter the file name for the ouput: ");
+        Put_Line ("Please enter the file name for the output: ");
         Get_Line (file);
         exist := Exists (To_String (file));
 
@@ -36,7 +36,7 @@ procedure calce is
             return file;
         elsif overwrite = 'N' or overwrite = 'n' then
             while exist loop
-                Put_Line ("Please provide a different fileName:");
+                Put_Line ("Please provide a different file name:");
                 Get_Line (file);
                 exist := Exists (To_String (file));
             end loop;
@@ -98,7 +98,7 @@ procedure calce is
 
     --procedure to write the resulting e value to an ASCII file specified by the user
     procedure keepe
-       (evalue : in intList; filename : Unbounded_String; size : Integer)
+       (evalue : in intList; filename : Unbounded_String)
     is
         outputFp : File_Type;
     begin
@@ -106,7 +106,7 @@ procedure calce is
         Create (outputFp, Out_File, To_String (filename));
         Set_Output (outputFp);
 
-        for i in 1 .. size loop
+        for i in 1 .. evalue'length loop
             Put (trim(Integer'Image (evalue (i)), ada.strings.both));
             if i = 1 then
                 put(".");
@@ -129,5 +129,5 @@ procedure calce is
 begin
     filename := getInput (num_digits);
     getestLen (num_digits, estLen, test);
-    keepe (ecalcul (num_digits, estLen), filename, num_digits);
+    keepe (ecalcul (num_digits, estLen), filename);
 end calce;

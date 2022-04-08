@@ -2,6 +2,19 @@
 #include <stdlib.h>
 #include <math.h>
 
+int getInput(char * filename){
+    int sig_digits = 0;
+
+    printf("Please enter the number of significant digits: ");
+    scanf("%d", &sig_digits);
+
+    printf("Please enter the file name for the output\n ");
+    printf("WARNING: If the file name you input already exists, it will be overwritten!\n\n");
+    scanf("%s", filename);
+
+    return sig_digits;
+}
+
 void ecalculation(int num_digits, int * e){
     int m = 4;
     int temp = 0; 
@@ -36,19 +49,39 @@ void ecalculation(int num_digits, int * e){
         }
         e[i] = carry;
     }
-
-    for (int i = 0; i < num_digits; i++){
-        printf("%d", e[i]);
-    }
-    printf("\n");
 }
 
+void keepe(int * evalue, char * filename, int size){
+    FILE *pointer = fopen(filename, "w+" );
+
+
+    for(int i=0; i < size; i++){
+        fprintf(pointer, "%d", evalue[i]);
+        
+        if(i==0){
+            fprintf(pointer, ".");
+        }
+    }
+
+    printf("Output successfully recorded in %s!\n", filename);
+
+    if(pointer != NULL){
+        free(filename);
+        fclose(pointer);
+    }
+}
 
 int main(){
-    int num_digits = 801;
-    int * e = malloc(sizeof(int) * num_digits);
+    int * evalue;
+    int num_digits = 0;
+    char * filename = malloc(sizeof(char) * 256);
 
-    ecalculation(num_digits, e);
-    free(e);
+    num_digits = getInput(filename);
+    evalue = malloc(sizeof(int) * (num_digits));
+
+    ecalculation(num_digits, evalue);
+    keepe(evalue, filename, num_digits);
+
+    free(evalue);
     return 0;
 }

@@ -8,7 +8,9 @@
     statement labelled 'sweep'.
 """
 
+from json.tool import main
 import math
+import sys
 
 def ecalculation(num_digits, evalue):
     m = 4
@@ -34,8 +36,30 @@ def ecalculation(num_digits, evalue):
             carry = int(temp/j)
             coeff[j] = temp - carry * (j)
         evalue[i] = carry
-    print(''.join(map(str, evalue))) 
 
-n = 10
-evalue = [0 for i in range(n)]
-ecalculation(n, evalue)
+def keepe(evalue, filename):
+    with open(filename, "w+") as pointer:
+        sys.stdout = pointer
+        output = ''.join(map(str, evalue))
+        output = output[:1] + '.' + output[1:]
+        print(output)
+    pointer.close()
+
+def getInput():
+    print("Please enter the number of significant digits: ")
+    
+
+def main():
+    num_digits = int(input("Please enter the number of significant digits: "))
+    filename = input("Please enter the file name for the output: ")
+    evalue = [0 for i in range(num_digits)]
+    old_io = sys.stdout
+
+    ecalculation(num_digits, evalue) 
+    keepe(evalue, filename)
+
+    sys.stdout = old_io
+    print("\nOutput successfully recorded in " + filename +"!\n")
+
+if __name__ == "__main__":
+    main()
