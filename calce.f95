@@ -78,7 +78,7 @@ program calce
         integer :: temp, carry, i, j, k = 0
         integer, intent(in) :: sig_digits   
         integer, intent(out), dimension(sig_digits) :: evalue
-        
+
         do k = 2, estLen
             coeff(k) = 1
         end do
@@ -106,8 +106,10 @@ program calce
         character(len=255), intent(in) :: filename
         integer, dimension(:), intent(out) ::  evalue
 
+        100 format(I1)
+
         do i = 1, size(evalue)
-            write(unit_out,*) evalue(i)
+            write(unit_out, 100, advance = 'no') evalue(i)
         end do
 
         write(*,*) 'Output successfully generated to ', filename
