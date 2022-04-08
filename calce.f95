@@ -107,9 +107,14 @@ program calce
         integer, dimension(:), intent(out) ::  evalue
 
         100 format(I1)
+        200 format(A1)
 
         do i = 1, size(evalue)
             write(unit_out, 100, advance = 'no') evalue(i)
+
+            if(i==1)then 
+                write(unit_out, 200, advance = 'no') '.'
+            end if
         end do
 
         write(*,*) 'Output successfully generated to ', filename

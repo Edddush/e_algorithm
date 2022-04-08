@@ -114,6 +114,7 @@ procedure calce is
         end loop;
 
         Set_Output (Standard_Output);
+        Put_Line("Output successfully recorded in " & filename);
 
         --close file!--
         if Is_Open (outputFp) then

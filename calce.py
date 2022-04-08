@@ -13,17 +13,17 @@ import math
 import sys
 
 def ecalculation(num_digits, evalue):
-    m = 4
+    estLen = 4
     test_value = (num_digits + 1) * 2.30258509
-    while (m * (math.log(m) - 1.0) + 0.5 * math.log(6.2831852 * m)) < test_value:
-        m += 1
+    while (estLen * (math.log(estLen) - 1.0) + 0.5 * math.log(6.2831852 * estLen)) < test_value:
+        estLen += 1
     
   
     carry = 0
     temp = 0
     
-    coeff = [0 for i in range(m+1)]
-    for j in range(2, m+1):
+    coeff = [0 for i in range(estLen+1)]
+    for j in range(2, estLen+1):
         coeff[j] = 1
     
     evalue[0] = 2
@@ -31,7 +31,7 @@ def ecalculation(num_digits, evalue):
     for i in range(1, num_digits):
         carry = 0
         
-        for j in range(m, 1, -1):
+        for j in range(estLen, 1, -1):
             temp = coeff[j] * 10 + carry
             carry = int(temp/j)
             coeff[j] = temp - carry * (j)

@@ -8,30 +8,30 @@ int getInput(char * filename){
     printf("Please enter the number of significant digits: ");
     scanf("%d", &sig_digits);
 
-    printf("Please enter the file name for the output\n ");
-    printf("WARNING: If the file name you input already exists, it will be overwritten!\n\n");
+    printf("Please enter the file name for the output\n");
+    printf("\nWARNING: If the file name you input already exists, it will be overwritten!\n\n");
     scanf("%s", filename);
 
     return sig_digits;
 }
 
 void ecalculation(int num_digits, int * e){
-    int m = 4;
+    int estLen = 4;
     int temp = 0; 
     int carry = 0;
     float test_value = (num_digits + 1) * 2.30258509;
     
    
-    while ((m * (log(m) - 1.0) + 0.5 * log(6.2831852 * m)) < test_value){
-        m += 1;
+    while ((estLen * (log(estLen) - 1.0) + 0.5 * log(6.2831852 * estLen)) < test_value){
+        estLen += 1;
     }
 
-    int coeff[m+1];
-    for(int i = 0; i <= m; i++){
+    int coeff[estLen+1];
+    for(int i = 0; i <= estLen; i++){
         coeff[i] = 0;
     }
 
-    for(int i = 2; i <= m; i++){
+    for(int i = 2; i <= estLen; i++){
         coeff[i] = 1;
     }
  
@@ -42,7 +42,7 @@ void ecalculation(int num_digits, int * e){
 
     for (int i = 1; i < num_digits; i++){
         carry = 0;
-        for(int j = m; j >= 2; j--){
+        for(int j = estLen; j >= 2; j--){
             temp = coeff[j] * 10 + carry;
             carry = (int) temp/j;
             coeff[j] = temp - carry * j;
