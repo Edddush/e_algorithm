@@ -51,7 +51,10 @@ def getInput():
 
 def main():
     num_digits = int(input("Please enter the number of significant digits: "))
-    filename = input("Please enter the file name for the output: ")
+    
+    print("Please enter the file name for the output: ")
+    filename = input("\nWARNING: If the file name you input already exists, it will be overwritten!\n");
+    
     evalue = [0 for i in range(num_digits)]
     old_io = sys.stdout
 
