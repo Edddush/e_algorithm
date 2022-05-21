@@ -2,7 +2,7 @@
 A program to calculate the value of e using integer arithmetic. The only time where we 
 need to use floats is when estimating the series length with a test value.
 
-Author: Eddy Dushime 1084994
+Author: Edddush
 
 Assumptions: 
     - The output can have an extra new line character at the end
